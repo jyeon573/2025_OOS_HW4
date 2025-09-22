@@ -5,6 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body {
+            background: black;
+        }
+
+        #menu {
+            color: pink;
+            font-size: 30px;
+            list-style: none;
+            display: flex;
+            padding: 30px;
+            justify-content: space-evenly;
+            /* 아이템들 균등 배치 */
+            align-items: center;
+            height: 100vh;
+
+            a {
+                color: rgb(222, 124, 141);
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: lightpink;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
