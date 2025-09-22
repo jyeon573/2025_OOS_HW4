@@ -11,20 +11,22 @@
     <style>
         #container {
             display: flex;
-            flex-direction: column;
-            /* 위아래로 배치 */
+            /* flex 컨테이너로 만들고 */
             align-items: center;
-            /* 가로 중앙 정렬 */
-            
+            /* 세로 가운데 */
+            justify-content: center;
+            /* 가로 가운데 */
+            flex-direction: column;
+            height: 100%;    
         }
 
         #yellow {
             width: 400px;
             height: 200px;
-            background: #f3cb75;
+            background: rgba(255, 230, 0, 0.666);
 
             font-size: 50px;
-            color: #c85045;
+            color: red;
 
             display: flex;
             align-items: center;
