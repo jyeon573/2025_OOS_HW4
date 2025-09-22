@@ -1,0 +1,99 @@
+노란 상자 안에서 빨간 글씨로 타이머 작동
+시작 중지 버튼을 누르면 멈춤
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            /* 위아래로 배치 */
+            align-items: center;
+            /* 가로 중앙 정렬 */
+            
+        }
+
+        #yellow {
+            width: 400px;
+            height: 200px;
+            background: #f3cb75;
+
+            font-size: 50px;
+            color: #c85045;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #button {
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            gap: 50px;
+        }
+
+        #start {
+            background-color: #27c341;
+            color: black;
+        }
+
+        #stop {
+            background-color: #c85045;
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="yellow">
+        </div>
+        <div id="button">
+            <div id="start">
+                시작
+            </div>
+            <div id="stop">
+                중지
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const box = document.getElementById("yellow");
+    const start = document.getElementById("start");
+    const stop = document.getElementById("stop");
+
+    let time = 0;
+    let timer = null;
+
+    start.addEventListener("click", () => {
+        if (timer !== null) return;
+
+        time = 0;
+        box.textContent = time;
+
+        timer = setInterval(() => {
+            time++;
+            box.textContent = time;
+        }, 1000);
+    });
+
+    stop.addEventListener("click", () => {
+        clearInterval(timer);
+        timer = null;
+    });
+</script>
+
+</html>
