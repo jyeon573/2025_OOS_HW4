@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab2</title>
+</head>
+<body>
+
+  <script>
+    // 현재 페이지 경로 출력
+    console.log(location.pathname);
+
+    // localStorage에서 방문 여부 확인
+    const hasVisited = localStorage.getItem("hasVisited");
+
+    if (!hasVisited) {
+      // 처음 방문일 때만 실행
+      alert("환영합니다! 처음 방문해주셨네요 😊");
+      localStorage.setItem("hasVisited", "true"); // 기록 남기기
+    }
+  </script>
+</body>
+</html>
+
