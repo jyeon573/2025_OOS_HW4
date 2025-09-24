@@ -65,9 +65,8 @@
                     list.innerHTML = ""; // 기존 목록 초기화
                     data.forEach(item => {
                         const li = document.createElement("li");
-                        li.textContent = item.title;
-                        li.textContent = `${user.name} - ${user.email}`;
-                        userList.appendChild(li);
+                        li.textContent = `${item.name} - ${item.email}`;
+                        list.appendChild(li);
                     });
                 })
                 .catch(error => console.error('Error', error));

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="read-btn">Read🥺</button>
+    <button id="create-btn">Create🥺</button>
+    <button id="update-btn">Update🥺</button>
+    <button id="delete-btn">Delete🥹</button>
+
+    <ul id="list"></ul>
+    <script>
+    const API = "http://localhost:3001/books";
+    const list = document.getElementById("list");
+
+    // READ
+    document.getElementById("read-btn").addEventListener("click", async () => {
+      const res = await fetch(API);
+      const data = await res.json();
+      list.innerHTML = "";
+      data.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.id}: ${item.title} - ${item.author}`;
+        list.appendChild(li);
+      });
+    });
+
+    // CREATE
+    document.getElementById("create-btn").addEventListener("click", async () => {
+      const title = prompt("Book title?");
+      const author = prompt("Author?");
+      if (!title || !author) return;
+      await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, author })
+      });
+      alert("Created!");
+    });
+
+    // UPDATE
+    document.getElementById("update-btn").addEventListener("click", async () => {
+      const id = prompt("ID to update?");
+      const newTitle = prompt("New title?");
+      if (!id || !newTitle) return;
+      await fetch(`${API}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: newTitle })
+      });
+      alert("Updated!");
+    });
+
+    // DELETE
+    document.getElementById("delete-btn").addEventListener("click", async () => {
+      const id = prompt("ID to delete?");
+      if (!id) return;
+      await fetch(`${API}/${id}`, { method: "DELETE" });
+      alert("Deleted!");
+    });
+  </script>
+
+</body>
+
+</html>
