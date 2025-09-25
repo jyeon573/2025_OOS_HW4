@@ -17,7 +17,9 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            gap: 5vh;
         }
+
     </style>
 </head>
 
@@ -29,55 +31,55 @@
 
     <ul id="list"></ul>
     <script>
-    const API = "http://localhost:3001/books";
-    const list = document.getElementById("list");
+        const API = "http://localhost:3001/books";
+        const list = document.getElementById("list");
 
-    // READ
-    document.getElementById("read-btn").addEventListener("click", async () => {
-      const res = await fetch(API);
-      const data = await res.json();
-      list.innerHTML = "";
-      data.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.id}: ${item.title} - ${item.author}`;
-        list.appendChild(li);
-      });
-    });
+        // READ
+        document.getElementById("read-btn").addEventListener("click", async () => {
+            const res = await fetch(API);
+            const data = await res.json();
+            list.innerHTML = "";
+            data.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.id}: ${item.title} - ${item.author}`;
+                list.appendChild(li);
+            });
+        });
 
-    // CREATE
-    document.getElementById("create-btn").addEventListener("click", async () => {
-      const title = prompt("Book title?");
-      const author = prompt("Author?");
-      if (!title || !author) return;
-      await fetch(API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, author })
-      });
-      alert("Created!");
-    });
+        // CREATE
+        document.getElementById("create-btn").addEventListener("click", async () => {
+            const title = prompt("Book title?");
+            const author = prompt("Author?");
+            if (!title || !author) return;
+            await fetch(API, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title, author })
+            });
+            alert("Created!");
+        });
 
-    // UPDATE
-    document.getElementById("update-btn").addEventListener("click", async () => {
-      const id = prompt("ID to update?");
-      const newTitle = prompt("New title?");
-      if (!id || !newTitle) return;
-      await fetch(`${API}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: newTitle })
-      });
-      alert("Updated!");
-    });
+        // UPDATE
+        document.getElementById("update-btn").addEventListener("click", async () => {
+            const id = prompt("ID to update?");
+            const newTitle = prompt("New title?");
+            if (!id || !newTitle) return;
+            await fetch(`${API}/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title: newTitle })
+            });
+            alert("Updated!");
+        });
 
-    // DELETE
-    document.getElementById("delete-btn").addEventListener("click", async () => {
-      const id = prompt("ID to delete?");
-      if (!id) return;
-      await fetch(`${API}/${id}`, { method: "DELETE" });
-      alert("Deleted!");
-    });
-  </script>
+        // DELETE
+        document.getElementById("delete-btn").addEventListener("click", async () => {
+            const id = prompt("ID to delete?");
+            if (!id) return;
+            await fetch(`${API}/${id}`, { method: "DELETE" });
+            alert("Deleted!");
+        });
+    </script>
 
 </body>
 
