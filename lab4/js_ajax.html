@@ -1,3 +1,5 @@
+<!-- npx json-server --watch data.json --port 3001 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,22 +18,25 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            gap: 5vh;
         }
 
         ul {
-            padding: 0;
             list-style: none;
+        }
+
+        #btn {
+            display: flex;
+            gap: 5vh;
         }
     </style>
 </head>
 
 <body>
     <div id="btn">
-    <button id="read-btn">Read🥺</button>
-    <button id="create-btn">Create🥺</button>
-    <button id="update-btn">Update🥺</button>
-    <button id="delete-btn">Delete🥹</button>
+        <button id="read-btn">Read🥺</button>
+        <button id="create-btn">Create🥺</button>
+        <button id="update-btn">Update🥺</button>
+        <button id="delete-btn">Delete🥹</button>
     </div>
 
     <ul id="list"></ul>
